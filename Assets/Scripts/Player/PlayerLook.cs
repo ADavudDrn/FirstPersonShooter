@@ -17,7 +17,7 @@ namespace DefaultNamespace
             _xRotation -= (mouseY * Time.deltaTime) * YSensitivity;
             _xRotation = Mathf.Clamp(_xRotation, -80, 80);
             Cam.transform.localRotation = Quaternion.Euler(_xRotation,0,0);
-            transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * XSensitivity);
+            transform.Rotate(Vector3.up * (mouseX * Time.deltaTime * XSensitivity));
         }
     }
 }
