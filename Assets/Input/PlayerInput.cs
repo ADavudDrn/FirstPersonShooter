@@ -82,15 +82,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Sprint"",
-                    ""type"": ""Button"",
-                    ""id"": ""2071888a-8f19-42b2-a3c5-20f300f0d554"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""CrouchGamepad"",
                     ""type"": ""Button"",
                     ""id"": ""2f1a7006-0bb2-4d9b-9e89-65a368059d37"",
@@ -103,15 +94,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""WalkGamepad"",
                     ""type"": ""Button"",
                     ""id"": ""b3fcd3c8-8ab5-490e-9a19-5c5de5763dd2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SprintGamepad"",
-                    ""type"": ""Button"",
-                    ""id"": ""15065ae4-6e6d-47cf-a0a0-37da8ac37a05"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -319,17 +301,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""95917f39-8c5a-4ecc-96fa-6b90c2676bf7"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""58f465a3-5462-4652-a0a4-b18fbaedd540"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
@@ -347,17 +318,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""WalkGamepad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5f41e9f1-a41b-44bd-b01a-96b4abd97170"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SprintGamepad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -890,10 +850,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Walk = m_OnFoot.FindAction("Walk", throwIfNotFound: true);
         m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
-        m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
         m_OnFoot_CrouchGamepad = m_OnFoot.FindAction("CrouchGamepad", throwIfNotFound: true);
         m_OnFoot_WalkGamepad = m_OnFoot.FindAction("WalkGamepad", throwIfNotFound: true);
-        m_OnFoot_SprintGamepad = m_OnFoot.FindAction("SprintGamepad", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -973,10 +931,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Walk;
     private readonly InputAction m_OnFoot_Crouch;
     private readonly InputAction m_OnFoot_Interact;
-    private readonly InputAction m_OnFoot_Sprint;
     private readonly InputAction m_OnFoot_CrouchGamepad;
     private readonly InputAction m_OnFoot_WalkGamepad;
-    private readonly InputAction m_OnFoot_SprintGamepad;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -987,10 +943,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Walk => m_Wrapper.m_OnFoot_Walk;
         public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
-        public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
         public InputAction @CrouchGamepad => m_Wrapper.m_OnFoot_CrouchGamepad;
         public InputAction @WalkGamepad => m_Wrapper.m_OnFoot_WalkGamepad;
-        public InputAction @SprintGamepad => m_Wrapper.m_OnFoot_SprintGamepad;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1018,18 +972,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @Sprint.started += instance.OnSprint;
-            @Sprint.performed += instance.OnSprint;
-            @Sprint.canceled += instance.OnSprint;
             @CrouchGamepad.started += instance.OnCrouchGamepad;
             @CrouchGamepad.performed += instance.OnCrouchGamepad;
             @CrouchGamepad.canceled += instance.OnCrouchGamepad;
             @WalkGamepad.started += instance.OnWalkGamepad;
             @WalkGamepad.performed += instance.OnWalkGamepad;
             @WalkGamepad.canceled += instance.OnWalkGamepad;
-            @SprintGamepad.started += instance.OnSprintGamepad;
-            @SprintGamepad.performed += instance.OnSprintGamepad;
-            @SprintGamepad.canceled += instance.OnSprintGamepad;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1052,18 +1000,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @Sprint.started -= instance.OnSprint;
-            @Sprint.performed -= instance.OnSprint;
-            @Sprint.canceled -= instance.OnSprint;
             @CrouchGamepad.started -= instance.OnCrouchGamepad;
             @CrouchGamepad.performed -= instance.OnCrouchGamepad;
             @CrouchGamepad.canceled -= instance.OnCrouchGamepad;
             @WalkGamepad.started -= instance.OnWalkGamepad;
             @WalkGamepad.performed -= instance.OnWalkGamepad;
             @WalkGamepad.canceled -= instance.OnWalkGamepad;
-            @SprintGamepad.started -= instance.OnSprintGamepad;
-            @SprintGamepad.performed -= instance.OnSprintGamepad;
-            @SprintGamepad.canceled -= instance.OnSprintGamepad;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1207,10 +1149,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
         void OnCrouchGamepad(InputAction.CallbackContext context);
         void OnWalkGamepad(InputAction.CallbackContext context);
-        void OnSprintGamepad(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

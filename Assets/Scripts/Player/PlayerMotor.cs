@@ -14,7 +14,6 @@ public class PlayerMotor : MonoBehaviour
     
     private bool _crouching;
     private bool _walking;
-    private bool _springting;
     private float _speed;
 
     private Tween _crouchTween;
@@ -52,6 +51,8 @@ public class PlayerMotor : MonoBehaviour
 
     public void Crouch()
     {
+        _walking = false;
+        _crouching = true;
         var start = _controller.height;
         var time = (_controller.height - 1) * CrouchDuration;
         _speed = BaseSpeed * .3f;
@@ -60,6 +61,10 @@ public class PlayerMotor : MonoBehaviour
     }
     public void UnCrouch()
     {
+        if(_walking)
+            return;
+
+        _crouching = false;
         var start = _controller.height;
         var time = (2 - _controller.height) * CrouchDuration;
         _speed = BaseSpeed;
@@ -71,18 +76,29 @@ public class PlayerMotor : MonoBehaviour
     {
         _crouching = !_crouching;
         if (_crouching)
+        {
+            NormalWalk();
             Crouch();
+        }
         else
             UnCrouch();
     }
     
     public void SlowWalk()
     {
+        if(_crouching)
+            return;
+
+        _walking = true;
         _speed *= .5f;
     }
     
     public void NormalWalk()
     {
+        if(_crouching)
+            return;
+
+        _walking = false;
         _speed = BaseSpeed;
     }
     
@@ -90,25 +106,11 @@ public class PlayerMotor : MonoBehaviour
     {
         _walking = !_walking;
         if (_walking)
+        {
+            UnCrouch();
             SlowWalk();
+        }
         else
             NormalWalk();
     }
-
-    public void Sprint()
-    {
-        _speed = BaseSpeed * 2;
-    }
-    
-    public void SprintForGamepad()
-    {
-        _springting = !_springting;
-        if (_springting)
-            Sprint();
-        else
-            NormalWalk();
-    }
-    
-    
-    
 }

@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "2071888a-8f19-42b2-a3c5-20f300f0d554",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "CrouchGamepad",
                     "type": "Button",
                     "id": "2f1a7006-0bb2-4d9b-9e89-65a368059d37",
@@ -81,15 +72,6 @@
                     "name": "WalkGamepad",
                     "type": "Button",
                     "id": "b3fcd3c8-8ab5-490e-9a19-5c5de5763dd2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SprintGamepad",
-                    "type": "Button",
-                    "id": "15065ae4-6e6d-47cf-a0a0-37da8ac37a05",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -297,17 +279,6 @@
                 },
                 {
                     "name": "",
-                    "id": "95917f39-8c5a-4ecc-96fa-6b90c2676bf7",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "58f465a3-5462-4652-a0a4-b18fbaedd540",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -325,17 +296,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "WalkGamepad",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5f41e9f1-a41b-44bd-b01a-96b4abd97170",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SprintGamepad",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -18,13 +18,11 @@ public class InputManager : MonoBehaviour
         OnFoot.Jump.performed += _ => _motor.Jump();
         OnFoot.Crouch.started += _ => _motor.Crouch();
         OnFoot.Crouch.canceled += _ => _motor.UnCrouch();
+        OnFoot.Crouch.canceled += _ => CheckWalkedWhileCrouched();
         OnFoot.Walk.started += _ => _motor.SlowWalk();
         OnFoot.Walk.canceled += _ => _motor.NormalWalk();
-        OnFoot.Sprint.started += _ => _motor.Sprint();
-        OnFoot.Sprint.canceled += _ => _motor.NormalWalk();
         OnFoot.CrouchGamepad.performed += _ => _motor.CrouchForGamepad();
         OnFoot.WalkGamepad.performed += _ => _motor.WalkForGamepad();
-        OnFoot.SprintGamepad.performed += _ => _motor.SprintForGamepad();
 
     }
 
@@ -46,5 +44,11 @@ public class InputManager : MonoBehaviour
     private void LateUpdate()
     {
         _look.ProcessLook(OnFoot.Look.ReadValue<Vector2>());
+    }
+
+    private void CheckWalkedWhileCrouched()
+    {
+        if(OnFoot.Walk.IsInProgress())
+            _motor.SlowWalk();
     }
 }
