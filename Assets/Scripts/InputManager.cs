@@ -1,4 +1,4 @@
-using DefaultNamespace;
+using Player;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour

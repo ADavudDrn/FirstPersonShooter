@@ -2,18 +2,21 @@ using ReferenceValue;
 using TMPro;
 using UnityEngine;
 
-public class PlayerUI : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private TransformRef PromptTextTransform;
-    private TextMeshProUGUI _promptText;
-
-    private void Start()
+    public class PlayerUI : MonoBehaviour
     {
-        _promptText = PromptTextTransform.Value.GetComponent<TextMeshProUGUI>();
-    }
+        [SerializeField] private TransformRef PromptTextTransform;
+        private TextMeshProUGUI _promptText;
 
-    public void UpdateText(string promptMessage)
-    {
-        _promptText.text = promptMessage;
+        private void Start()
+        {
+            _promptText = PromptTextTransform.Value.GetComponent<TextMeshProUGUI>();
+        }
+
+        public void UpdateText(string promptMessage)
+        {
+            _promptText.text = promptMessage;
+        }
     }
 }

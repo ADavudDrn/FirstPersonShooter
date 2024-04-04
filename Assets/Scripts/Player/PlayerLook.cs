@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Player
 {
     public class PlayerLook : MonoBehaviour
     {
