@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace Interactables
@@ -6,8 +7,9 @@ namespace Interactables
     {
         private Animator _animator;
         private string _startPrompt;
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             _animator = GetComponent<Animator>();
             _startPrompt = PromptMessage;
         }
@@ -21,7 +23,13 @@ namespace Interactables
                 PromptMessage = "Animating...";
         }
 
+        
         protected override void Interact()
+        {
+            _photonView.RPC ("Animate", RpcTarget.AllBufferedViaServer);
+        }
+        [PunRPC]
+        private void Animate()
         {
             _animator.Play("Spin");
         }

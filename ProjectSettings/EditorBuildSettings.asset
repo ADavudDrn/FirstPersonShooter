@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/OutdoorsScene.unity
+  - enabled: 0
+    path: Assets/Scene/FirstPersonScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 1
+    path: Assets/Scene/PhotonScene.unity
+    guid: 1ce68e08ade1d124c97b091c687a7d27
   m_configObjects: {}

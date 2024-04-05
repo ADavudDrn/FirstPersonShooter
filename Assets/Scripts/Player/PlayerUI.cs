@@ -6,17 +6,11 @@ namespace Player
 {
     public class PlayerUI : MonoBehaviour
     {
-        [SerializeField] private TransformRef PromptTextTransform;
-        private TextMeshProUGUI _promptText;
-
-        private void Start()
-        {
-            _promptText = PromptTextTransform.Value.GetComponent<TextMeshProUGUI>();
-        }
+        [SerializeField] private TextMeshProUGUI PromptTextTransform;
 
         public void UpdateText(string promptMessage)
         {
-            _promptText.text = promptMessage;
+                PromptTextTransform.text = promptMessage;
         }
     }
 }
