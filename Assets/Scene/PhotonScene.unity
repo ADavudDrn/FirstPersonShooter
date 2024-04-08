@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f1f42fb472d8b42b874a1ad3312a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1713346789598868524, guid: 2ed815fae2f8fa24698e92426729e37a, type: 3}
+  Player: {fileID: 856728234418750326, guid: 2ed815fae2f8fa24698e92426729e37a, type: 3}
   SpawnPoint: {fileID: 1748707311}
 --- !u!4 &1626610795
 Transform:

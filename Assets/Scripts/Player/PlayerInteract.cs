@@ -12,7 +12,6 @@ namespace Player
         private PlayerUI _playerUI;
 
         private InputManager _inputManager;
-        // Start is called before the first frame update
         void Start()
         {
             _cam = GetComponent<PlayerLook>().Cam;
@@ -20,7 +19,6 @@ namespace Player
             _inputManager = GetComponent<InputManager>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             _playerUI.UpdateText(string.Empty);
